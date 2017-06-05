@@ -1,4 +1,5 @@
 import tkinter as tk
+import os, sys
 
 VISINA = 640
 SIRINA = 800
@@ -13,8 +14,8 @@ class Zemljevid:
             height = VISINA
         )
         self.platno.grid(row = 1, column = 1, columnspan = 2)
-        self.slika = tk.PhotoImage(file = "slike držav/islandija.gif")
-        self.platno.create_image(SIRINA // 2, VISINA // 2, image = self.slika)
+        #self.slika = tk.PhotoImage(file = "slike držav/islandija.gif")
+        #self.platno.create_image(SIRINA // 2, VISINA // 2, image = self.slika)
 
         gumb1 = tk.Button(okno, text='1. država')
         gumb1.grid(row=2, column=1)
@@ -28,13 +29,27 @@ class Zemljevid:
         gumb2 = tk.Button(okno, text='4. država')
         gumb2.grid(row=3, column=2)
 
+        self.naslednje_vprasanje()
+
     def naslednje_vprasanje(self):
+        path = "U:/git/Zemljevid/slikedrzav/"
+        dirs = os.listdir(path)
+        for i in range(len(dirs)):
+            dirs[i] = dirs[i][:-4]
+        print(dirs)
+
+
+
 
 
 
 okno = tk.Tk()
 aplikacija = Zemljevid(okno)
 okno.mainloop()
+
+#z metodo konfig spreminjas napise na gumbih
+
+#z modulom random, nakljucno izbiras države
 
 # funkcija "naslednje_vprasanje(self):", se bo sprožila takoj ko boš odprl aplikacijo.
 
